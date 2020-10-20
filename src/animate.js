@@ -21,7 +21,7 @@ export const animate = ($el, animation) => {
  * @param $el {HTMLElement}
  * @param animation {String} List of tailwind classes to add when an element enters.
  */
-export const onEnterTransitionTo = ($el, animation) => {
+export const transitionTo = ($el, animation) => {
   return new Promise((resolve, reject) => {
     $el.addEventListener(
       "transitionend",

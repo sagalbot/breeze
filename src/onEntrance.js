@@ -1,4 +1,4 @@
-import shouldAnimate from "./shouldAnimate";
+import shouldAnimate from "./shouldAnimate.js";
 
 const defaultThreshold = () => {
   return window.matchMedia("(min-width: 768px)").matches ? 0.25 : 0.5;
