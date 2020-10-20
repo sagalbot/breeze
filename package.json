@@ -1,0 +1,16 @@
+{
+  "name": "@sagalbot/breeze",
+  "version": "0.1.0",
+  "description": "Compelling entrance transitions for DOM elements as the enter the viewports.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "TailwindCSS",
+    "transitions",
+    "animation"
+  ],
+  "author": "Jeff Sagal",
+  "license": "MIT"
+}
