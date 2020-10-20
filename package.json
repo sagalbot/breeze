@@ -1,11 +1,8 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.1.0",
-  "description": "Transitions DOM elements as they enter the viewport.",
+  "version": "0.2.0",
+  "description": "Transitions DOM elements as they enter the viewport. Easy breezy!",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "TailwindCSS",
     "transitions",
