@@ -1,10 +1,10 @@
-import onEntrance from './onEntrance';
-import { animate, onEnterTransitionTo, transitionFrom } from './animate';
+import onEntrance from "./onEntrance.js";
+import { animate, transitionTo, transitionFrom } from "./animate.js";
 
 /**
  * Usage: x-init="animateIn('fade')"
  */
-export const animateIn = (animation, threshold = null) => {
+export const enterAnimation = (animation, threshold = null) => {
   return function () {
     this.$el.classList.add("invisible");
 
@@ -19,13 +19,13 @@ export const animateIn = (animation, threshold = null) => {
 /**
  * Usage: x-init="transitionTo('scale-x-100')"
  */
-export const transitionTo = (animation, threshold = null) => {
+export const enterTransitionTo = (animation, threshold = null) => {
   return function () {
     this.$el.classList.add("invisible");
 
     onEntrance(
       this.$el,
-      async ($el) => await onEnterTransitionTo($el, animation),
+      async ($el) => await transitionTo($el, animation),
       threshold
     );
   };

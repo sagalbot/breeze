@@ -1,7 +1,8 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.1.0",
-  "main": "index.js",
+  "version": "0.2.0",
+  "main": "src/breeze.js",
+  "type": "module",
   "repository": "https://github.com/sagalbot/breeze",
   "description": "Transitions DOM elements as they enter the viewport.",
   "keywords": [
@@ -11,7 +12,15 @@
   ],
   "author": "Jeff Sagal",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
   "devDependencies": {
-    "prettier": "^2.1.2"
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "prettier": "^2.1.2",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.1.0"
   }
 }

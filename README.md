@@ -3,8 +3,11 @@
 _Breezy doesn't expose anything to `window`, so you'll have to add it yourself_.
 
 ```
-import { enterTransition } from '@sagalbot/breezy/alpine'
+import { enterTransition } from "@sagalbot/breeze";
 
+/**
+ * Usage: x-init="enterTransition().from('opacity-0').to('opacity-100')"
+ */
 window.enterTransition = enterTransition;
 ```
 
