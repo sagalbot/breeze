@@ -1,8 +1,9 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.2.0",
-  "description": "Transitions DOM elements as they enter the viewport. Easy breezy!",
+  "version": "0.1.0",
   "main": "index.js",
+  "repository": "https://github.com/sagalbot/breeze",
+  "description": "Transitions DOM elements as they enter the viewport.",
   "keywords": [
     "TailwindCSS",
     "transitions",
