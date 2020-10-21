@@ -38,7 +38,6 @@ export const enterTransition = (threshold = null) => ({
   from: (fromClasses) => ({
     to: (toClasses) =>
       function () {
-            this.$el,
         transition(this.$el, fromClasses, toClasses, threshold);
       },
   }),
