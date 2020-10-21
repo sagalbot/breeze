@@ -1,6 +1,6 @@
 ## Usage with AlpineJS
 
-_Breezy doesn't expose anything to `window`, so you'll have to add it yourself_.
+_Breeze doesn't expose anything to `window`, so you'll have to add it yourself_.
 
 ```
 import { enterTransition } from "@sagalbot/breeze";
