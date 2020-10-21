@@ -38,29 +38,34 @@ export const enterTransition = (threshold = null) => ({
   from: (fromClasses) => ({
     to: (toClasses) =>
       function () {
-        this.$el.classList.add("invisible");
-
-        //  Remove any transition classes so that the initial state is not
-        //  transitioned to, rather triggered immediately
-        const transition = [...this.$el.classList].filter(
-          (classname) =>
-            classname.includes("transition") ||
-            classname.includes("duration") ||
-            classname.includes("delay")
-        );
-        this.$el.classList.remove(...transition);
-
-        //  Set initial state
-        this.$el.classList.add(...fromClasses.split(" "));
-
-        setTimeout(async () => {
-          this.$el.classList.add(...transition);
-          onEntrance(
             this.$el,
-            async ($el) => await transitionFrom($el, fromClasses, toClasses),
-            threshold
-          );
-        }, 0);
+        transition(this.$el, fromClasses, toClasses, threshold);
       },
   }),
 });
+
+export const transition = ($el, fromClasses, toClasses, threshold = null) => {
+  $el.classList.add("invisible");
+
+  //  Remove any transition classes so that the initial state is not
+  //  transitioned to, rather triggered immediately
+  const transition = [...$el.classList].filter(
+    (classname) =>
+      classname.includes("transition") ||
+      classname.includes("duration") ||
+      classname.includes("delay")
+  );
+  $el.classList.remove(...transition);
+
+  //  Set initial state
+  $el.classList.add(...fromClasses.split(" "));
+
+  setTimeout(async () => {
+    $el.classList.add(...transition);
+    onEntrance(
+      $el,
+      async ($el) => await transitionFrom($el, fromClasses, toClasses),
+      threshold
+    );
+  }, 0);
+};
