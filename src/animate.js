@@ -38,8 +38,14 @@ export const transitionTo = ($el, animation) => {
  * @param transitionFrom Classes to add before an element is visible.
  * @param transitionTo Classes to add immediately after making the element visible.
  */
-export const transitionFrom = ($el, transitionFrom, transitionTo) => {
+export const transitionFrom = (
+  $el,
+  transitionFrom,
+  transitionTo,
+  transitionClasses = []
+) => {
   return new Promise((resolve, reject) => {
+    $el.classList.add(...transitionFrom.split(" "), ...transitionClasses);
     $el.classList.remove("invisible");
     $el.addEventListener(
       "transitionend",

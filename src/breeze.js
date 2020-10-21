@@ -48,11 +48,8 @@ export const transition = ($el, fromClasses, toClasses, threshold = null) => {
 
   //  Remove any transition classes so that the initial state is not
   //  transitioned to, rather triggered immediately
-  const transition = [...$el.classList].filter(
-    (classname) =>
-      classname.includes("transition") ||
-      classname.includes("duration") ||
-      classname.includes("delay")
+  const transition = [...$el.classList].filter((classname) =>
+    classname.includes("transition")
   );
   $el.classList.remove(...transition);
 
@@ -67,4 +64,16 @@ export const transition = ($el, fromClasses, toClasses, threshold = null) => {
       threshold
     );
   }, 0);
+};
+
+export const alpineDirective = () => {
+  [...document.querySelectorAll("[x-breeze]")].forEach(($el) => {
+    try {
+      const value = $el.attributes["x-breeze"].value.replace(/'/g, '"');
+      const { from, to, threshold = null } = (0, eval)("(" + value + ")");
+      transition($el, from, to, threshold);
+    } catch (e) {
+      console.log(e);
+    }
+  });
 };
