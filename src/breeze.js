@@ -1,70 +1,42 @@
 import onEntrance from "./onEntrance.js";
-import { animate, transitionTo, transitionFrom } from "./animate.js";
+
+import {
+  getFromClasses,
+  getToClasses,
+  getTransitionClasses,
+  nextTick,
+  shouldAnimate,
+} from "./utils.js";
 
 /**
- * Usage: x-init="animateIn('fade')"
+ * @param $el {HTMLElement}
+ * @return {{breeze: []}|{breeze: {fromClasses: *, toClasses: *, transitionClasses: *[], element: *}[]}}
  */
-export const enterAnimation = (animation, threshold = null) => {
-  return function () {
-    this.$el.classList.add("invisible");
+export function breeze($el) {
+  if (!shouldAnimate()) {
+    return { breeze: [] };
+  }
 
-    onEntrance(
-      this.$el,
-      async ($el) => await animate($el, animation),
-      threshold
-    );
-  };
-};
+  const breeze = [...$el.querySelectorAll(":scope [x-breeze-from]")].map(
+    (element) => {
+      const transitionClasses = getTransitionClasses(element);
+      const fromClasses = getFromClasses(element);
+      const toClasses = getToClasses(element);
 
-/**
- * Usage: x-init="transitionTo('scale-x-100')"
- */
-export const enterTransitionTo = (animation, threshold = null) => {
-  return function () {
-    this.$el.classList.add("invisible");
+      element.classList.add("invisible");
+      element.classList.remove(...transitionClasses);
 
-    onEntrance(
-      this.$el,
-      async ($el) => await transitionTo($el, animation),
-      threshold
-    );
-  };
-};
+      onEntrance(element, async (element) => {
+        element.classList.add(...fromClasses);
+        await nextTick();
+        element.classList.add(...transitionClasses);
+        element.classList.remove("invisible", ...fromClasses);
+        element.classList.add(...toClasses);
+      });
 
-/**
- * Usage: x-init="enterTransition().from('opacity-0').to('opacity-100')"
- */
-export const enterTransition = (threshold = null) => ({
-  from: (fromClasses) => ({
-    to: (toClasses) =>
-      function () {
-        transition(this.$el, fromClasses, toClasses, threshold);
-      },
-  }),
-});
-
-export const transition = ($el, fromClasses, toClasses, threshold = null) => {
-  $el.classList.add("invisible");
-
-  //  Remove any transition classes so that the initial state is not
-  //  transitioned to, rather triggered immediately
-  const transition = [...$el.classList].filter(
-    (classname) =>
-      classname.includes("transition") ||
-      classname.includes("duration") ||
-      classname.includes("delay")
+      return { element, fromClasses, toClasses, transitionClasses };
+    }
   );
-  $el.classList.remove(...transition);
 
-  //  Set initial state
-  $el.classList.add(...fromClasses.split(" "));
-
-  setTimeout(async () => {
-    $el.classList.add(...transition);
-    onEntrance(
-      $el,
-      async ($el) => await transitionFrom($el, fromClasses, toClasses),
-      threshold
-    );
-  }, 0);
-};
+  return { breeze };
+}
