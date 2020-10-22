@@ -1,7 +1,7 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.2.2",
-  "main": "src/breeze.js",
+  "version": "0.3.0",
+  "main": "dist/breeze.js",
   "type": "module",
   "repository": "https://github.com/sagalbot/breeze",
   "description": "Transitions DOM elements as they enter the viewport.",

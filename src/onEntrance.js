@@ -1,5 +1,3 @@
-import shouldAnimate from "./shouldAnimate.js";
-
 const defaultThreshold = () => {
   return window.matchMedia("(min-width: 768px)").matches ? 0.25 : 0.5;
 };
@@ -12,10 +10,6 @@ const defaultThreshold = () => {
  * @return {boolean}
  */
 export default ($el, callback, threshold = null) => {
-  if (!shouldAnimate()) {
-    return false;
-  }
-
   /**
    * @param {IntersectionObserverEntry} entry
    */
@@ -39,6 +33,5 @@ export default ($el, callback, threshold = null) => {
 
   // eslint-disable-next-line
   const observer = new IntersectionObserver(whenEntering, { threshold });
-
   observer.observe($el);
 };
