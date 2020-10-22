@@ -28,10 +28,11 @@ export function breeze($el) {
 
       onEntrance(element, async (element) => {
         element.classList.add(...fromClasses);
-        await nextTick();
-        element.classList.add(...transitionClasses);
-        element.classList.remove("invisible", ...fromClasses);
-        element.classList.add(...toClasses);
+        nextTick().then(() => {
+          element.classList.add(...transitionClasses);
+          element.classList.remove("invisible", ...fromClasses);
+          element.classList.add(...toClasses);
+        });
       });
 
       return { element, fromClasses, toClasses, transitionClasses };

@@ -1,7 +1,7 @@
 export const shouldAnimate = () =>
   window.matchMedia("not (prefers-reduced-motion)").matches;
 
-export const nextTick = async () =>
+export const nextTick = () =>
   new Promise((resolve) =>
     setTimeout(() => window.requestAnimationFrame(() => resolve()), 25)
   );
