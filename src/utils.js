@@ -1,5 +1,5 @@
 export const shouldAnimate = () =>
-  window.matchMedia("not (prefers-reduced-motion)").matches;
+  window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
 export const nextTick = () =>
   new Promise((resolve) =>
