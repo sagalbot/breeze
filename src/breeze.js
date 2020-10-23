@@ -17,27 +17,27 @@ export function breeze($el) {
     return { breeze: [] };
   }
 
-  const breeze = [...$el.querySelectorAll(":scope [x-breeze-from]")].map(
-    (element) => {
-      const transitionClasses = getTransitionClasses(element);
-      const fromClasses = getFromClasses(element);
-      const toClasses = getToClasses(element);
+  const breeze = [
+    ...$el.querySelectorAll(":scope [x-breeze-from], :scope [x-breeze-to]"),
+  ].map((element) => {
+    const transitionClasses = getTransitionClasses(element);
+    const fromClasses = getFromClasses(element);
+    const toClasses = getToClasses(element);
 
-      element.classList.add("invisible");
-      element.classList.remove(...transitionClasses);
+    element.classList.add("invisible");
+    element.classList.remove(...transitionClasses);
 
-      onEntrance(element, async (element) => {
-        element.classList.add(...fromClasses);
-        nextTick().then(() => {
-          element.classList.add(...transitionClasses);
-          element.classList.remove("invisible", ...fromClasses);
-          element.classList.add(...toClasses);
-        });
+    onEntrance(element, async (element) => {
+      element.classList.add(...fromClasses);
+      nextTick().then(() => {
+        element.classList.add(...transitionClasses);
+        element.classList.remove("invisible", ...fromClasses);
+        element.classList.add(...toClasses);
       });
+    });
 
-      return { element, fromClasses, toClasses, transitionClasses };
-    }
-  );
+    return { element, fromClasses, toClasses, transitionClasses };
+  });
 
   return { breeze };
 }
