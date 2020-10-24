@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "esmodules": true,
+          "edge": "16"
+        }
+      }
+    ]
+  ]
+}

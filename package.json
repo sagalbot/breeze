@@ -1,6 +1,6 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.4.3",
+  "version": "0.0.0-development",
   "main": "dist/breeze.js",
   "type": "module",
   "repository": "https://github.com/sagalbot/breeze",
@@ -14,19 +14,34 @@
   "license": "MIT",
   "scripts": {
     "watch": "rollup -c -w",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.6",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "bundlewatch": "^0.3.1",
     "prettier": "^2.1.2",
     "rollup": "^2.32.1",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.0.2",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "semantic-release": "^17.2.1"
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "./dist/breeze.js",
+        "compression": "none",
+        "maxSize": "5 KB"
+      }
+    ]
   }
 }
