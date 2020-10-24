@@ -12,12 +12,12 @@ export default {
     format: "esm",
   },
   plugins: [
-    filesize(),
     resolve(),
     commonjs({
       include: "node_modules/**",
     }),
     babel(),
     terser(),
+    filesize(),
   ],
 };
