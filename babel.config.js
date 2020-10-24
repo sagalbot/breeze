@@ -10,7 +10,6 @@ module.exports = {
       {
         targets: {
           esmodules: true,
-          node: "current",
           edge: "16",
         },
       },
