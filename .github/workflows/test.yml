@@ -1,0 +1,20 @@
+name: Test & Build
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+
+      - name: Build Dist
+        run: yarn build
+
+      - name: Bundlewatch
+        run: npx bundlewatch
