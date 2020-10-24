@@ -10,13 +10,10 @@ jobs:
           node-version: 12
 
       - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Build Dist
         run: yarn build
 
       - name: Bundlewatch
-        run: npx bundlewatch
-        env:
-          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+        run: yarn bundlewatch
