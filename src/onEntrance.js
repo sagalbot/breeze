@@ -16,7 +16,6 @@ export function onEntrance($el, callback, threshold = null) {
   const whenEntering = ([entry]) => {
     if (entry.isIntersecting) {
       callback($el);
-      console.log(entry);
       observer.disconnect();
     }
   };

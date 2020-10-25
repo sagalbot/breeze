@@ -3,10 +3,16 @@ import { onEntrance } from "./onEntrance.js";
 export const shouldAnimate = () =>
   window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
+export const requestFrame = (callback) =>
+  window.requestAnimationFrame(() => callback());
+
+/**
+ * @TODO there's probably a better way to ensure the browser has time
+ * transition than by sleeping for 25ms. Set it to 0 and the transitions
+ * never take place.
+ */
 export const nextTick = () =>
-  new Promise((resolve) =>
-    setTimeout(() => window.requestAnimationFrame(() => resolve()), 25)
-  );
+  new Promise((resolve) => setTimeout(() => requestFrame(() => resolve()), 25));
 
 /**
  * @param element {HTMLElement}
@@ -52,15 +58,11 @@ export const whenImageIsLoaded = (element) => {
       window.requestAnimationFrame(() => resolve(element));
 
     if (element.complete) {
-      console.log("image was completed");
       return requestFrameAndResolve();
     }
 
     loadImage(element)
-      .then(() => {
-        console.log("image was loaded");
-        requestFrameAndResolve();
-      })
+      .then(() => requestFrameAndResolve())
       .catch(reject);
   });
 };
@@ -85,22 +87,16 @@ export const scheduleEntrance = (element, from, to, transition) => {
   ];
 
   if (isImage(element)) {
-    return whenImageIsLoaded(element).then(() => {
-      console.log("image is loaded");
-      onEntrance(...entrance);
-    });
-  } else {
-    return onEntrance(...entrance);
+    return whenImageIsLoaded(element).then(() => onEntrance(...entrance));
   }
+  return onEntrance(...entrance);
 };
 
 export const beginEntrance = (element, from, to, transition) => {
-  console.log("beginning entrance");
   element.classList.add(...from);
   nextTick().then(() => {
     element.classList.add(...transition);
     element.classList.remove("invisible", ...from);
     element.classList.add(...to);
   });
-  console.log("completing entrance");
 };
