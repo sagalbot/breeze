@@ -21,18 +21,20 @@ npm i @sagalbot/breeze
 
 ### CDN
 
-Breeze ships as an ES Module,  
-
-- use the latest version: `https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js`
-- or, you can specify a version: `https://unpkg.com/@sagalbot/breeze@0.4.3/dist/breeze.js`
+Breeze ships as an ES Module, so you'll need to load it a bit differently than you might be used to.
 
 ```html
 <script type="module">
-    import {breeze} from "https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js";
+    // Load the library
+    import { breeze } from "https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js";
     
+    // Transition anything within the body
     breeze(document.body);
 </script>
 ```
+
+- use the latest version: `https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js`
+- or, you can specify a version: `https://unpkg.com/@sagalbot/breeze@0.4.3/dist/breeze.js`
 
 ## Browser Support
 
