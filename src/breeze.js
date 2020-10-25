@@ -6,16 +6,22 @@ import {
   scheduleEntrance,
 } from "./utils.js";
 
+import { merge } from "./config.js";
+
 /**
  * @param $el {HTMLElement}
  */
-export function breeze($el) {
+export function breeze($el, config = {}) {
   if (!shouldAnimate()) {
     return { breeze: [] };
   }
 
+  config = merge(config);
+
   const breeze = [
-    ...$el.querySelectorAll(":scope [x-breeze-from], :scope [x-breeze-to]"),
+    ...$el.querySelectorAll(    
+      `:scope [${config.directive}-from], :scope [${config.directive}-to]`
+    ),
   ].map((element) => {
     const transition = getTransitionClasses(element);
     const from = getFromClasses(element);
