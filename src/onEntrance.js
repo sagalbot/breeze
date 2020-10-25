@@ -9,13 +9,14 @@ const defaultThreshold = () => {
  * @param threshold {Number|Function}
  * @return {boolean}
  */
-export default ($el, callback, threshold = null) => {
+export function onEntrance($el, callback, threshold = null) {
   /**
    * @param {IntersectionObserverEntry} entry
    */
   const whenEntering = ([entry]) => {
     if (entry.isIntersecting) {
       callback($el);
+      console.log(entry);
       observer.disconnect();
     }
   };

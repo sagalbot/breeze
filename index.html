@@ -11,28 +11,36 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
   </head>
-  <body
-    class="flex flex-col divide-y justify-center items-center container mx-auto py-20 w-full font-bold text-2xl"
-  >
+  <body class="flex flex-col divide-y font-bold text-2xl">
     <div
-      class="h-screen flex flex-col items-center justify-center w-full relative"
+      class="h-screen w-full relative flex flex-col items-center justify-center"
     >
-      <img
-        src="https://source.unsplash.com/random/3000x3000"
-        class="duration-1000 transform ease-in"
-        x-breeze-from="opacity-0 translate-x-5"
-        x-breeze-to="opacity-100"
-      />
+      <!-- https://images.unsplash.com/photo-1603469467013-aafb831e2a47?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max -->
+      <!-- https://source.unsplash.com/random -->
+      <div class="absolute w-full h-full flex flex-1">
+        <img
+          src="https://images.unsplash.com/photo-1603469467013-aafb831e2a47?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+          class="transition transition ease-in duration-1000 object-cover flex-1"
+          x-breeze-from="opacity-0 scale-95"
+        />
+      </div>
       <h2
-        class="absolute w-full text-center z-10 text-4xl text-teal-500"
-        style="mix-blend-mode: overlay"
+        class="w-full text-center z-10 text-4xl"
+        style="
+          mix-blend-mode: overlay;
+          text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.25);
+        "
       >
-        This image will wait to transition until load.
+        An image will transition in behind this text.
       </h2>
     </div>
     <div class="h-screen flex flex-col items-center justify-center w-full">
@@ -42,7 +50,6 @@
       <h1
         class="duration-1000 transform ease-in max-h-screen w-auto"
         x-breeze-from="opacity-0 translate-x-5"
-        x-breeze-to="opacity-100"
       >
         Hello World
       </h1>

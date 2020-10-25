@@ -1,11 +1,9 @@
-import onEntrance from "./onEntrance.js";
-
 import {
-  getFromClasses,
-  getToClasses,
-  getTransitionClasses,
-  nextTick,
   shouldAnimate,
+  getToClasses,
+  getFromClasses,
+  getTransitionClasses,
+  scheduleEntrance,
 } from "./utils.js";
 
 /**
@@ -35,13 +33,3 @@ export function breeze($el) {
 
   return { breeze };
 }
-
-const scheduleEntrance = (element, from, to, transition) =>
-  onEntrance(element, async (element) => {
-    element.classList.add(...from);
-    nextTick().then(() => {
-      element.classList.add(...transition);
-      element.classList.remove("invisible", ...from);
-      element.classList.add(...to);
-    });
-  });

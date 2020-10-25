@@ -1,4 +1,4 @@
-export const loaded = [];
+import { onEntrance } from "./onEntrance.js";
 
 export const shouldAnimate = () =>
   window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
@@ -48,10 +48,20 @@ export const isImage = (element) => element instanceof HTMLImageElement;
  */
 export const whenImageIsLoaded = (element) => {
   return new Promise((resolve, reject) => {
+    const requestFrameAndResolve = () =>
+      window.requestAnimationFrame(() => resolve(element));
+
     if (element.complete) {
-      return resolve(element);
+      console.log("image was completed");
+      return requestFrameAndResolve();
     }
-    loadImage(element).then(() => resolve(element)).catch(reject);
+
+    loadImage(element)
+      .then(() => {
+        console.log("image was loaded");
+        requestFrameAndResolve();
+      })
+      .catch(reject);
   });
 };
 
@@ -62,6 +72,35 @@ export const whenImageIsLoaded = (element) => {
  */
 export const loadImage = (element) =>
   new Promise((resolve, reject) => {
-    element.onload = () => resolve(element);
-    element.onerror = reject;
+    const image = new Image();
+    image.onload = () => resolve(element);
+    image.onerror = reject;
+    image.src = element.src;
   });
+
+export const scheduleEntrance = (element, from, to, transition) => {
+  const entrance = [
+    element,
+    async () => beginEntrance(element, from, to, transition),
+  ];
+
+  if (isImage(element)) {
+    return whenImageIsLoaded(element).then(() => {
+      console.log("image is loaded");
+      onEntrance(...entrance);
+    });
+  } else {
+    return onEntrance(...entrance);
+  }
+};
+
+export const beginEntrance = (element, from, to, transition) => {
+  console.log("beginning entrance");
+  element.classList.add(...from);
+  nextTick().then(() => {
+    element.classList.add(...transition);
+    element.classList.remove("invisible", ...from);
+    element.classList.add(...to);
+  });
+  console.log("completing entrance");
+};
