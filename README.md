@@ -1,9 +1,6 @@
 # Breeze 💨
 
-Breeze is a small HTML directive for transitioning elements into the viewport. 
-
-- designed for use with TailwindCSS, but it'll work with any CSS framework
-- works great with AlpineJS ~~and virtual DOM libraries~~
+Breeze is a small JavaScript library for transitioning elements into the viewport. The API design was heavily influenced by TailwindCSS and AlpineJS (which it works amazing with!), but is totally agnostic of any frameworks you might be using. Just give Breeze a root `element`, some classes, and you'll be transitioning in your elements in no time.
 
 - [Demo](https://breeze.sagalbot.com)
 - [CodePen](https://codepen.io/sagalbot/pen/wvWgdjm?editors=1010)
@@ -53,6 +50,6 @@ IE does not support `IntersectionObserver`, Edge 16 was the first Edge release w
 
 Breeze ships as an ES module to keep overhead as low as possible. If you're using a build tool like Webpack or Rollup, this won't impact you, but if you're adding the package via CDN, you will need ES module support in the browser. Support for ES modules in the browser is pretty on par with IntersectionObserver.
 
-![image](https://user-images.githubusercontent.com/692538/97114322-1e64ae00-16ad-11eb-87aa-4a27d88dbd14.png)
+![image](https://user-images.githubusercontent.com/692538/97114534-46084600-16ae-11eb-89bb-e3fc5b7b01b6.png)
 
 [Source: caniuse.com](https://caniuse.com/es6-module)
