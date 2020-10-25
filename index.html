@@ -11,46 +11,65 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
   </head>
-  <body
-    class="flex flex-col justify-center items-center container mx-auto py-20"
-  >
-    <div class="space-y-64 flex flex-col text-center">
-      <div
-        class="min-h-screen border-b border-purple-300 flex items-center justify-center text-2xl font-bold"
+
+  <body class="flex flex-col font-bold text-2xl text-gray-600">
+    <div class="h-screen flex flex-col items-center justify-center w-full">
+      <h1
+        x-breeze-to="animate__animated animate__flipInX animate__slower text-indigo-600 tracking-tighter"
+        class="text-6xl"
       >
-        <h1>This one isn't going to animate.</h1>
-      </div>
-      <div
-        class="min-h-screen border-b border-purple-300 flex items-center justify-center text-2xl font-bold"
+        Breeze
+      </h1>
+    </div>
+
+    <div class="h-screen flex flex-col items-center justify-center w-full">
+      <h1>This one isn't going to do anything.</h1>
+    </div>
+
+    <div class="h-screen flex flex-col items-center justify-center w-full">
+      <h1
+        class="duration-1000 transform ease-in max-h-screen w-auto"
+        x-breeze-from="opacity-0 translate-y-5"
       >
-        <h1
-          class="duration-500 transform ease-in"
-          x-breeze-from="opacity-0 translate-x-5"
-          x-breeze-to="opacity-100"
-        >
-          Hello World
-        </h1>
-      </div>
-      <div
-        class="min-h-screen border-b border-purple-300 flex items-center justify-center text-2xl font-bold"
+        This one will fade in and up with tailwind transforms.
+      </h1>
+    </div>
+
+    <div class="h-screen bg-black flex items-center justify-center relative">
+      <h2
+        class="w-full text-center text-white z-10 text-4xl transition delay-1000 transform"
       >
-        <h1 x-breeze-to="animate__animated animate__zoomInDown">
-          Animate.css - animate__zoomInDown
-        </h1>
-      </div>
-      <div
-        class="min-h-screen border-b border-purple-300 flex items-center justify-center text-2xl font-bold"
-      >
-        <h1 x-breeze-to="animate__animated animate__flipInX">
-          Animate.css - animate__flipInX
-        </h1>
+        An image will transition in behind this text.
+      </h2>
+      <div class="absolute w-full h-full flex flex-1">
+        <img
+          src="https://images.unsplash.com/photo-1533880020541-22c0ff17d4a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
+          class="transition ease-out delay-1000 duration-1000 object-cover flex-1 invisible"
+          x-breeze-from="opacity-0"
+        />
       </div>
     </div>
+
+    <div class="h-screen flex flex-col items-center justify-center w-full">
+      <h1 x-breeze-to="animate__animated animate__flipInX">
+        This one will <code>flipInX</code> using <code>Animate.css</code>
+      </h1>
+    </div>
+
     <script type="module">
       import { breeze } from "./dist/breeze.js";
       breeze(document.body);
