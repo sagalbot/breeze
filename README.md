@@ -79,12 +79,14 @@ Breeze has a few directives available:
 
 ```html
 <h1
-    class="duration-1000 transform ease-in max-h-screen w-auto"
+    class="transition duration-1000 transform ease-in"
     x-breeze-from="opacity-0 translate-y-5"
 >
-This one will fade in and up with tailwind transforms.
+    This one will fade in and up over 1000ms with TailwindCSS utility classes.
 </h1>
 ```
+
+When using `x-breeze-from`, you usually won't need to set an `x-breeze-to` state. `x-breeze-from` classes are added immediately when the element appears in the viewport, and then removed on the next animation frame.
 
 ## Browser Support
 
