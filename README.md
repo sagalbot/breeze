@@ -42,6 +42,39 @@ Breeze ships as an ES Module, so you'll need to load it a bit differently than y
 - use the latest version: `https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js`
 - or, you can specify a version: `https://unpkg.com/@sagalbot/breeze@0.4.3/dist/breeze.js`
 
+## Usage / API
+
+1. Provide Breeze a root element to initialize. Breeze will only apply entrance transitions to children of this element.
+
+If you're bundling your code with something like webpack or rollup, that will likely look like this:
+
+```js
+import { breeze } from '@sagalbot/breeze'
+
+breeze(document.body);
+```
+
+If you're using the CDN, you would instantiate Breeze like this:
+
+```html
+<script type="module">
+    // Load the library
+    import { breeze } from "https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js";
+    
+    // Transition anything within the body
+    breeze(document.body);
+</script>
+```
+
+2. Set directives within your HTML.
+
+You'll mainly interact with Breeze via custom attributes on HTMLElements. We'll refer to these as directives.
+
+Breeze has a few directives available:
+
+- `x-breeze-from`: A set of one or more CSS classes that define the starting point for your transition. 
+- `x-breeze-to`: A set of one or more CSS classes that define the end state for your transition.
+
 ## Browser Support
 
 ### IntersectionObserver
