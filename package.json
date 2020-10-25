@@ -41,7 +41,7 @@
       {
         "path": "./dist/breeze.js",
         "compression": "none",
-        "maxSize": "5 KB"
+        "maxSize": "2 KB"
       }
     ]
   },
