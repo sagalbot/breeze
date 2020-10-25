@@ -44,7 +44,9 @@ Breeze ships as an ES Module, so you'll need to load it a bit differently than y
 
 ## Usage / API
 
-### 1. Provide Breeze a root element to initialize. Breeze will only apply entrance transitions to children of this element.
+### 1. Provide Breeze a root element to initialize. 
+
+Breeze will only apply entrance transitions to children of this element.
 
 **NPM/Bundlers**
 If you're bundling your code with something like webpack or rollup, that will likely look like this:
