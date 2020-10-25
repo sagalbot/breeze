@@ -48,8 +48,7 @@ Breeze ships as an ES Module, so you'll need to load it a bit differently than y
 
 Breeze will only apply entrance transitions to children of this element.
 
-**NPM/Bundlers / ** 
-If you're bundling your code with something like webpack or rollup, that will likely look like this:
+**NPM/Bundlers** / If you're bundling your code with something like webpack or rollup:
 
 ```js
 import { breeze } from '@sagalbot/breeze'
@@ -57,8 +56,7 @@ import { breeze } from '@sagalbot/breeze'
 breeze(document.body);
 ```
 
-**CDN / **
-If you're using the CDN, you would instantiate Breeze like this:
+**CDN** / If you're using the CDN:
 
 ```html
 <script type="module">
