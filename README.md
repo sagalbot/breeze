@@ -112,14 +112,13 @@ When using `x-breeze-from`, you usually won't need to set an `x-breeze-to` state
 ```html
 <h1
     class="transition duration-1000 transform ease-in"
-    x-breeze-to="translate-y-5"
+    x-breeze-to="translate-y-10"
 >
-    This one will fade in and up over 1000ms with TailwindCSS utility classes.
+    This one translate down in the viewport as it enters.
 </h1>
 ```
 
-When using `x-breeze-from`, you usually won't need to set an `x-breeze-to` state. `x-breeze-from` classes are added immediately when the element appears in the viewport, and then removed on the next animation frame.
-
+When using `x-breeze-to` without setting `x-breeze-from`, whatever you set in `class` should be considered the initial state. When the element enters the viewport, the classes in `x-breeze-to` will be added to the element.
 
 ## Browser Support
 
