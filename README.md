@@ -6,6 +6,23 @@
 
 Breeze is a small JavaScript library for transitioning elements into the viewport. 
 
+```html
+<h1
+    class="transition duration-1000 transform ease-in"
+    x-breeze-to="translate-y-5"
+>
+    This one will fade in and up over 1000ms with TailwindCSS utility classes.
+</h1>
+
+<script type="module">
+    // Load the library
+    import { breeze } from "https://unpkg.com/@sagalbot/breeze@latest/dist/breeze.js";
+    
+    // Transition anything within the body
+    breeze(document.body);
+</script>
+```
+
 The API design was heavily influenced by TailwindCSS and AlpineJS _(which it works amazing with!)_, but is totally agnostic of any frameworks you might be using. Just give Breeze a root `element`, some classes, and you'll be transitioning in your elements in no time.
 
 - [Demo](https://breeze.sagalbot.com)
