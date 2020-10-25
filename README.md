@@ -2,7 +2,8 @@
 
 ![Current Release](https://img.shields.io/github/release/sagalbot/breeze.svg?style=flat-square) 
 ![Release Date](https://img.shields.io/github/release-date/sagalbot/breeze?style=flat-square) 
-![Bundle Size](https://flat.badgen.net/bundlephobia/min/@sagalbot/breeze) 
+![Minified Size](https://flat.badgen.net/bundlephobia/min/@sagalbot/breeze) 
+![Minified + GZipped Size](https://flat.badgen.net/bundlephobia/minzip/@sagalbot/breeze) 
 
 Breeze is a small JavaScript library for transitioning elements into the viewport. 
 
