@@ -1,13 +1,16 @@
+import onEntrance from "./onEntrance.js";
+
 import {
-  shouldAnimate,
-  getToClasses,
   getFromClasses,
+  getToClasses,
   getTransitionClasses,
-  scheduleEntrance,
+  nextTick,
+  shouldAnimate,
 } from "./utils.js";
 
 /**
  * @param $el {HTMLElement}
+ * @return {{breeze: []}|{breeze: {fromClasses: *, toClasses: *, transitionClasses: *[], element: *}[]}}
  */
 export function breeze($el) {
   if (!shouldAnimate()) {
@@ -17,18 +20,23 @@ export function breeze($el) {
   const breeze = [
     ...$el.querySelectorAll(":scope [x-breeze-from], :scope [x-breeze-to]"),
   ].map((element) => {
-    const transition = getTransitionClasses(element);
-    const from = getFromClasses(element);
-    const to = getToClasses(element);
+    const transitionClasses = getTransitionClasses(element);
+    const fromClasses = getFromClasses(element);
+    const toClasses = getToClasses(element);
 
     element.classList.add("invisible");
-    element.classList.remove(...transition);
+    element.classList.remove(...transitionClasses);
 
-    const entrance = [element, from, to, transition];
+    onEntrance(element, async (element) => {
+      element.classList.add(...fromClasses);
+      nextTick().then(() => {
+        element.classList.add(...transitionClasses);
+        element.classList.remove("invisible", ...fromClasses);
+        element.classList.add(...toClasses);
+      });
+    });
 
-    scheduleEntrance(...entrance);
-
-    return { element, from, to, transition };
+    return { element, fromClasses, toClasses, transitionClasses };
   });
 
   return { breeze };
