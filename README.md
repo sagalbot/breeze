@@ -77,6 +77,8 @@ Breeze has a few directives available:
 - `x-breeze-from`: A set of one or more CSS classes that define the starting point for your transition. 
 - `x-breeze-to`: A set of one or more CSS classes that define the end state for your transition.
 
+**x-breeze-from**
+
 ```html
 <h1
     class="transition duration-1000 transform ease-in"
