@@ -9,7 +9,7 @@ const defaultThreshold = () => {
  * @param threshold {Number|Function}
  * @return {boolean}
  */
-export function onEntrance($el, callback, threshold = null) {
+export default ($el, callback, threshold = null) => {
   /**
    * @param {IntersectionObserverEntry} entry
    */
