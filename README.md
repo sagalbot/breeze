@@ -88,7 +88,21 @@ Breeze has a few directives available:
 </h1>
 ```
 
+When using `x-breeze-from`, you usually won't need to set an `x-breeze-to` state. `x-breeze-from` classes are added immediately when the element appears in the viewport, and then removed on the next animation frame. In the example above, we don't need to explicitly set `x-breeze-to="opacity-100"` because that is the elements default opacity – as soon as `opacity-0` is removed from the `classList`, the element will being to transition in.
+
+**x-breeze-to**
+
+```html
+<h1
+    class="transition duration-1000 transform ease-in"
+    x-breeze-to="translate-y-5"
+>
+    This one will fade in and up over 1000ms with TailwindCSS utility classes.
+</h1>
+```
+
 When using `x-breeze-from`, you usually won't need to set an `x-breeze-to` state. `x-breeze-from` classes are added immediately when the element appears in the viewport, and then removed on the next animation frame.
+
 
 ## Browser Support
 
