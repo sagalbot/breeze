@@ -1,6 +1,10 @@
 # Breeze 💨
 
-Breeze is a small JavaScript library for transitioning elements into the viewport. The API design was heavily influenced by TailwindCSS and AlpineJS (which it works amazing with!), but is totally agnostic of any frameworks you might be using. Just give Breeze a root `element`, some classes, and you'll be transitioning in your elements in no time.
+![Current Release](https://img.shields.io/github/release/sagalbot/breeze.svg?style=flat-square) ![Release Date](https://img.shields.io/github/release-date/sagalbot/breeze?style=flat-square) ![Bundle Size](https://flat.badgen.net/bundlephobia/min/@sagalbot/breeze) ![Monthly Downloads](https://img.shields.io/npm/dm/@sagalbot/breeze.svg?style=flat-square) [![Coverage Status](https://coveralls.io/repos/github/sagalbot/breeze/badge.svg?branch=master)](https://coveralls.io/github/sagalbot/breeze?branch=master) ![MIT License](https://img.shields.io/github/license/sagalbot/breeze.svg?style=flat-square)
+
+Breeze is a small JavaScript library for transitioning elements into the viewport. 
+
+The API design was heavily influenced by TailwindCSS and AlpineJS _(which it works amazing with!)_, but is totally agnostic of any frameworks you might be using. Just give Breeze a root `element`, some classes, and you'll be transitioning in your elements in no time.
 
 - [Demo](https://breeze.sagalbot.com)
 - [CodePen](https://codepen.io/sagalbot/pen/wvWgdjm?editors=1010)
