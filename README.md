@@ -9,7 +9,7 @@ Breeze is a small JavaScript library for transitioning elements into the viewpor
 ```html
 <h1
     class="transition duration-1000 transform ease-in"
-    x-breeze-to="translate-y-5"
+    x-breeze-from="opacity-0 translate-y-10"
 >
     This one will fade in and up over 1000ms with TailwindCSS utility classes.
 </h1>
