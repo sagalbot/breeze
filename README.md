@@ -24,7 +24,7 @@ Breeze is a small JavaScript library for transitioning elements into the viewpor
 </script>
 ```
 
-The API design was heavily influenced by TailwindCSS and AlpineJS _(which it works amazing with!)_, but is totally agnostic of any frameworks you might be using. Just give Breeze a root `element`, some classes, and you'll be transitioning in your elements in no time.
+The API design was heavily influenced by TailwindCSS and AlpineJS _(which it works amazing with!)_, but is totally agnostic of any frameworks you might be using. Breeze just needs a root element and the classes you'll use for your transition.
 
 - [Demo](https://breeze.sagalbot.com)
 - [CodePen](https://codepen.io/sagalbot/pen/wvWgdjm?editors=1010)
