@@ -63,7 +63,7 @@ export const whenImageIsLoaded = (element) => {
 
     loadImage(element)
       .then(() => requestFrameAndResolve())
-      .catch(reject);
+      .catch((e) => reject(e));
   });
 };
 
@@ -87,7 +87,9 @@ export const scheduleEntrance = (element, from, to, transition) => {
   ];
 
   if (isImage(element)) {
-    return whenImageIsLoaded(element).then(() => onEntrance(...entrance));
+    return whenImageIsLoaded(element)
+      .then(() => onEntrance(...entrance))
+      .catch((e) => {});
   }
   return onEntrance(...entrance);
 };
