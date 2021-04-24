@@ -102,3 +102,31 @@ export const beginEntrance = (element, from, to, transition) => {
     element.classList.add(...to);
   });
 };
+
+/**
+ * Parse an elements breeze attributes.
+ * @param {HTMLElement} element
+ */
+export const parseElementEntrance = (element) => {
+  const transition = getTransitionClasses(element);
+  const from = getFromClasses(element);
+  const to = getToClasses(element);
+
+  element.classList.add("invisible");
+  element.classList.remove(...transition);
+
+  return { element, from, to, transition };
+};
+
+/**
+ * Parse an elements Breeze attributes and schedule an entrance.
+ * @param element
+ * @return {{from: [], to: [], transition: *[], element}}
+ */
+export function parseElementAndScheduleEntrance(element) {
+  const { from, to, transition } = parseElementEntrance(element);
+
+  scheduleEntrance(element, from, to, transition);
+
+  return { element, from, to, transition };
+}
