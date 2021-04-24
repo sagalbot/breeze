@@ -1,6 +1,6 @@
 {
   "name": "@sagalbot/breeze",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "main": "dist/breeze.js",
   "module": "dist/breeze.js",
   "type": "module",
